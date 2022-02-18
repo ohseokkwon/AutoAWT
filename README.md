@@ -7,5 +7,17 @@ AutoAWT is a general-purpose wall thickness measurement algorithm for 3D atrial 
 # Getting Stated
 
 ### Installation
+- Dependencies
 
-### Dependencies
+- Dataset repository
+
+
+# Citation
+If you find this code useful, please consider citing our paper.
+```
+```
+
+# Quations / Issues
+If you have any questions or issues using this code, please make a log to the the Issue tab.
+
+# Acknowledgements
