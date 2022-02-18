@@ -21,6 +21,16 @@ The code was written by [Oh-Seok Kwon](link) with support from [Hui-Nam Pak]().
 # Citation
 If you find this code useful, please consider citing our paper.
 ```
+@article{
+title={},
+author={},
+journal={},
+volume={},
+number={},
+pages={},
+yaer={},
+publisher={}
+}
 ```
 
 # Quations / Issues
