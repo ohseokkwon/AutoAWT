@@ -15,7 +15,7 @@ The code was written by [Oh-Seok Kwon](link) with support from [Hui-Nam Pak]().
   - CUDA 10.0 
 
 - Datasets repository
-  - The sample mask images for AutoAWT in [[datasets/masks_1]]("/datasets/masks_1").
+  - The sample mask images for AutoAWT in [datasets/masks_1]("/datasets/masks_1").
 
 ### Run
 
