@@ -12,7 +12,7 @@ The code was written by [Oh-Seok Kwon](link) with support from [Hui-Nam Pak]().
 
 ### Installation
 - Dependencies
-  - CUDA 10.0 "([download]("https://developer.nvidia.com/cuda-10.0-download-archive")")
+  - CUDA 10.0 [download]("https://developer.nvidia.com/cuda-10.0-download-archive")
 
 - Datasets repository
   - The sample mask images for AutoAWT in [datasets/masks_1]("/datasets/masks_1").
