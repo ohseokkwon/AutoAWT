@@ -12,6 +12,7 @@ The code was written by [Oh-Seok Kwon](link) with support from [Hui-Nam Pak]().
 
 ### Installation
 - Dependencies
+  CUDA 10.0 
 
 - Datasets repository
 
