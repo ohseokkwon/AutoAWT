@@ -24,7 +24,7 @@ Step 1. select directory of mask images (datasets/Phantom/masks_1).
 Step 2. select directory of DCM (datasets/Phantom/ct)
 ```
 
-Derived results
+Derived results (in "Results" directory)
 ```
 - WT-endo.plt : Calculated wall thickness from endocardium to epicardium
 - WT(projected)-PatientID.plt : Wall thickness projected to surface mesh
