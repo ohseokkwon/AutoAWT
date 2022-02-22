@@ -85,11 +85,17 @@ launch_inverse_depth_volume(dim3 grid, dim3 threads, uint16* in, uint16* out, ui
 }
 
 extern "C" void
-launch_polygon_fill_2D(dim3 grid, dim3 threads, uint16* out, uint depth, uint3 gridSize, float2* contour, uint contour_size)
+launch_polygon_fill_2D(dim3 grid, dim3 threads, uint16* out, uint depth, uint3 gridSize, float2* contour, uint contour_size, CTview view)
 {
-	polygon_fill_2D << <grid, threads >> > (out, depth, gridSize, contour, contour_size);
+	polygon_fill_2D << <grid, threads >> > (out, depth, gridSize, contour, contour_size, view);
 
 	getLastCudaError("polygon_fill_2D failed");
+}
+
+extern "C" void
+launch_logical_and(dim3 grid, dim3 threads, uint16* dst, uint16* buf, uint3 gridSize)
+{
+	cu_logical_and << <grid, threads >> > (dst, buf, gridSize);
 }
 
 extern "C" void

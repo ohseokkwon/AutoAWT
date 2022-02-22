@@ -8,4 +8,7 @@ void GetFileList_by_path(std::string f_path, std::vector<std::string>& lists, wc
 
 glm::ivec4 readBMPFiles(std::vector<std::string>& lists, uint16** volume, uint direction = 0);
 void exportBMP(uint16* d_HU, glm::ivec4 windowSize, std::string fName);
-void computeFillSpace(uint16* h_res_buffer, std::vector<glm::vec2> lineBuffer, uint idx, glm::vec3 volume_size = glm::vec3(0));
+void computeFillSpace(uint16* h_res_buffer, std::vector<glm::vec2> lineBuffer, uint idx, glm::vec3 volume_size, CTview view);
+
+
+void arr_logical_and(uint16*& dst, uint16*& buf, glm::vec3 volume_size);

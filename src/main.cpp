@@ -110,32 +110,11 @@ int main()
 
 	clock_t st_time, ed_time;
 	float calc_time = 0.0f;
-	// Quickhull로 교체...
 
-	
-//#define USE_PYTHON_PROCESSOR
-#ifndef USE_PYTHON_PROCESSOR
 	auto ret = true;
-
-#else
-	st_time = clock();
-	// 파이썬 프로그램 실행
-	STARTUPINFO StartupInfo = { 0 };
-	StartupInfo.cb = sizeof(STARTUPINFO);
-	PROCESS_INFORMATION ProcessInfo;
-
-	std::string process_param = "XYZ_convex2D.exe --bmpDir \"" + fpath + "\"";
-	std::cout << process_param << std::endl;
-	auto ret = ::CreateProcess(NULL, const_cast<char *>(process_param.c_str()), NULL, NULL, FALSE, 0, NULL, NULL, &StartupInfo, &ProcessInfo);
-#endif
-
 	if (ret == TRUE) {
-#ifndef USE_PYTHON_PROCESSOR
-		/*	InitializerPath(file_names, L"Convex 파일 선택 (BMP)", L".bmp");
-			std::cout << "waited: " << fpath + "\\Merge-hull" << std::endl;*/
-
-		uint16* hull_mask_pt = new uint16[volume_size.x * volume_size.y * volume_size.z];
-		memset(hull_mask_pt, 0, sizeof(uint16)*volume_size.x * volume_size.y * volume_size.z);
+		uint16* merged_hull = new uint16[volume_size.x * volume_size.y * volume_size.z];
+		memset(merged_hull, 0, sizeof(uint16)*volume_size.x * volume_size.y * volume_size.z);
 
 		uint16* hull_mask = new uint16[volume_size.x * volume_size.y * volume_size.z];
 		memset(hull_mask, 0, sizeof(uint16)*volume_size.x * volume_size.y * volume_size.z);
@@ -155,36 +134,24 @@ int main()
 			quickHull.initialize();
 			vector<glm::vec2> convex_points = quickHull.getDrawablePoints();
 
-			// 정렬.. 중복이 있습니다. 짝수별로 정렬필요.
-
 			auto ed = clock();
 			double dt = (ed - st);
 			sum_time += dt;
 #ifdef _DEBUG
 			std::cout << "idx: " << i << ", convex-point: " << convex_points.size() << ", dt: " << dt << "ms" << std::endl;
-#endif _DEBUG
-			//int line_cnt = 0;
 			for (int j = 0; j < convex_points.size(); j++) {
 				glm::vec2 pt1 = convex_points[j];
-				/*glm::vec2 pt2 = convex_points[(j+1) % convex_points.size()];
-
-				hull_mask_pt[i*volume_size.x*volume_size.y + (int)pt1.y*volume_size.x + (int)pt1.x] = line_cnt;
-				hull_mask_pt[i*volume_size.x*volume_size.y + (int)pt2.y*volume_size.x + (int)pt2.x] = line_cnt;
-				line_cnt++;*/
-
-				hull_mask_pt[i*volume_size.x*volume_size.y + (int)pt1.y*volume_size.x + (int)pt1.x] = 255;
+				merged_hull[i*volume_size.x*volume_size.y + (int)pt1.y*volume_size.x + (int)pt1.x] = j;
 			}
-			computeFillSpace(hull_mask, convex_points, i, volume_size);
+			exportBMP(merged_hull, volume_size, "axial2");
+#endif _DEBUG
+			computeFillSpace(merged_hull, convex_points, i, volume_size, CTview::axial);
 		}
 		std::cout << "acc_time: " << sum_time << std::endl;
-		exportBMP(hull_mask_pt, volume_size, "axial");
-		exportBMP(hull_mask, volume_size, "axial2");
-
-		return 0;
+		exportBMP(merged_hull, volume_size, "axial");
 
 		//! coronal
 		sum_time = 0;
-		memset(hull_mask_pt, 0, sizeof(uint16)*volume_size.x * volume_size.y * volume_size.z);
 		for (int i = 0; i < volume_size.x; i++) {
 			auto st = clock();
 			QHull quickHull;
@@ -201,18 +168,20 @@ int main()
 			sum_time += dt;
 #ifdef _DEBUG
 			std::cout << "idx: " << i << ", convex-point: " << convex_points.size() << ", dt: " << dt << "ms" << std::endl;
-#endif
 			for (int j = 0; j < convex_points.size(); j++) {
 				glm::vec2 pt = convex_points[j];
-				hull_mask_pt[(int)pt.x*volume_size.x*volume_size.y + (int)pt.y*volume_size.x + i] = 1;
+				merged_hull[(int)pt.x*volume_size.x*volume_size.y + (int)pt.y*volume_size.x + i] = 1;
 			}
+			exportBMP(merged_hull, volume_size, "sagittal");
+#endif _DEBUG
+			computeFillSpace(hull_mask, convex_points, i, volume_size, CTview::sagittal);
 		}
+		arr_logical_and(merged_hull, hull_mask, volume_size);
 		std::cout << "acc_time: " << sum_time << std::endl;
-		exportBMP(hull_mask_pt, volume_size, "sagittal");
 
-		//! sagittal
+		//! coronal
 		sum_time = 0;
-		memset(hull_mask_pt, 0, sizeof(uint16)*volume_size.x * volume_size.y * volume_size.z);
+		memset(hull_mask, 0, sizeof(uint16)*volume_size.x * volume_size.y * volume_size.z);
 		for (int i = 0; i < volume_size.y; i++) {
 			auto st = clock();
 			QHull quickHull;
@@ -229,36 +198,27 @@ int main()
 			sum_time += dt;
 #ifdef _DEBUG
 			std::cout << "idx: " << i << ", convex-point: " << convex_points.size() << ", dt: " << dt << "ms" << std::endl;
-#endif
-
 			for (int j = 0; j < convex_points.size(); j++) {
 				glm::vec2 pt = convex_points[j];
-				hull_mask_pt[(int)pt.y*volume_size.x*volume_size.y + i*volume_size.x + (int)pt.x] = 1;
+				merged_hull[(int)pt.y*volume_size.x*volume_size.y + i*volume_size.x + (int)pt.x] = 1;
 			}
+			exportBMP(merged_hull, volume_size, "coronal");
+#endif
+			computeFillSpace(hull_mask, convex_points, i, volume_size, CTview::coronal);
 		}
+		arr_logical_and(merged_hull, hull_mask, volume_size);
 		std::cout << "acc_time: " << sum_time << std::endl;
-		exportBMP(hull_mask_pt, volume_size, "coronal");
 
-		delete[] hull_mask_pt;
-
-#else
-		::WaitForSingleObject(ProcessInfo.hProcess, INFINITE);
-		CloseHandle(ProcessInfo.hProcess);
-		ed_time = clock();
-		calc_time = (ed_time - st_time);
-		std::cerr << "Finished Merged HULL : " << calc_time << "ms \n";
-		std::cerr << "Finished Merged HULL : " << calc_time / 1e3f << "sec \n";
-
-		GetFileList_by_path(fpath + "\\Merge-hull", file_names, L".bmp");
-#endif USE_PYTHON_PROCESSOR
-
-		readBMPFiles(file_names, &g_ConvexMask);
+		exportBMP(merged_hull, volume_size, "Merged-hull");
+		delete[] hull_mask;
+		//delete[] merged_hull;
 
 		calc_time = 0.0f;
 		st_time = clock();
 
 		//! WT 계산
-		WT* wt_algorithms = new WT(fpath + "\\Merge-hull", volume_size, g_pixel_spacing, volume_position, g_WallMask, g_ConvexMask);
+		CreateDirectoryA((fpath + "\\Results").c_str(), nullptr);
+		WT* wt_algorithms = new WT(fpath + "\\Results", volume_size, g_pixel_spacing, volume_position, g_WallMask, merged_hull);
 
 //#define GET_MAIN_VOLUME
 #ifdef GET_MAIN_VOLUME
@@ -272,16 +232,14 @@ int main()
 #endif
 		ed_time = clock();
 		calc_time = (ed_time - st_time);
-		std::cerr << "Finished epi-endo calculation : " << calc_time << "ms \n";
-		std::cerr << "Finished epi-endo calculation : " << calc_time / 1e3f << "sec \n";
+		std::cerr << "Finished epi-endo calculation : " << calc_time << "ms (" << calc_time/1e3 << " s) \n";
 
 		calc_time = 0.0f;
 		st_time = clock();
 		wt_algorithms->evalWT();
 		ed_time = clock();
 		calc_time = (ed_time - st_time);
-		std::cerr << "Finished WT : " << calc_time << "ms \n";
-		std::cerr << "Finished WT : " << calc_time / 1e3f << "sec \n";
+		std::cerr << "Finished WT : " << calc_time << "ms (" << calc_time / 1e3 << " s) \n";
 
 		memcpy(g_WallMask, wt_algorithms->getChamberMask(), sizeof(uint16)*volume_size.x*volume_size.y*volume_size.z);
 		std::vector<float4> endo_vertices_list;
@@ -289,13 +247,13 @@ int main()
 		std::copy(wt_algorithms->m_endo_vertices_list.begin(), wt_algorithms->m_endo_vertices_list.end(), endo_vertices_list.begin());
 		delete wt_algorithms;
 
+		
 
+		surfaces = new MarchingCube(fpath + "\\Results", g_WallMask, volume_size, (float*)&g_pixel_spacing, volume_position, MarchingCube::from_host);
 
-		surfaces = new MarchingCube(fpath + "\\Merge-hull", g_WallMask, volume_size, (float*)&g_pixel_spacing, volume_position, MarchingCube::from_host);
-
-		//delete[] temp_volume;
 		surfaces->computeISOsurface(g_WallMask, MarchingCube::from_host);
-		surfaces->saveMeshInfo(fpath + "-WT-" + patientID, &endo_vertices_list);
+		surfaces->saveMeshInfo(fpath + "\\Results\\" + "WT(projected)-" + patientID, &endo_vertices_list);
+		delete[] merged_hull;
 	}
 
 	return 0;

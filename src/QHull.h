@@ -10,7 +10,7 @@ private:
 	//Random points
 	vector<glm::vec2> pointCloud;
 	//Final boundary Point
-	vector<glm::vec2> drawablePoints;
+	vector<glm::vec2> hull;
 
 public:
 	void initialize();
@@ -23,5 +23,5 @@ public:
 	void quickHull(vector<glm::vec2> a, int n, glm::vec2 p1, glm::vec2 p2, int side);
 	void generateHull();
 
-	void javisHull();
+	void jarvisHull();
 };

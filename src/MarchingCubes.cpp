@@ -263,7 +263,7 @@ void MarchingCube::computeISOsurface(const void* volume, INPUT_DATA_ATTRIB type)
 	float calc_time = (ed_time - st_time);
 
 	st_time = clock();
-	saveMeshInfo((m_save_path + "\\test").c_str());
+	saveMeshInfo((m_save_path + "\\surface_mesh").c_str());
 	ed_time = clock();
 
 	//// filename <= Patient name or patient ID + date
@@ -439,7 +439,7 @@ void MarchingCube::writePLT(const std::string filename, float4* _d_pos, float4* 
 		//! 거리 제약 조건
 		float epsil = 1e-03;
 		/*fout << vert.x << " " << vert.y << " " << vert.z << " " << ((closestDist > epsil) ? -1.0 : closest.w) << "\n";*/
-		fout << vert.x << " " << vert.y << " " << vert.z << " " << closestDist << "\n";
+		fout << vert.x << " " << vert.y << " " << vert.z << " " << closest.w << "\n";
 	}
 
 	int num_faces = 0;

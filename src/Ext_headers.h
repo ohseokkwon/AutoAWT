@@ -30,6 +30,9 @@
 typedef unsigned int uint32;
 typedef unsigned char uchar;
 typedef unsigned short uint16;
+enum class CTview {
+	axial = 0, coronal, sagittal
+};
 
 extern "C" void bindVolumeTexture(uint16 *d_volume, cudaExtent volumeSize);
 extern "C" void allocFundamentalTextures_CUDA(uint32 *d_edgeTable, uint32 *d_triTable, uint32 *d_numVertsTable);
@@ -49,7 +52,9 @@ extern "C" void ThrustScanWrapper(unsigned int *output, unsigned int *input, uns
 extern "C" void
 launch_inverse_depth_volume(dim3 grid, dim3 threads, uint16* in, uint16* out, uint3 gridSize, uint32 midpoint);
 extern "C" void
-launch_polygon_fill_2D(dim3 grid, dim3 threads, uint16* out, uint depth, uint3 gridSize, float2* contour, uint contour_size);
+launch_polygon_fill_2D(dim3 grid, dim3 threads, uint16* out, uint depth, uint3 gridSize, float2* contour, uint contour_size, CTview view);
+extern "C" void
+launch_logical_and(dim3 grid, dim3 threads, uint16* dst, uint16* buf, uint3 gridSize);
 extern "C" void
 launch_volume_metric(dim3 grid, dim3 threads, uint16* in_volume, uint3 gridSize, uint32* out_2d);
 
@@ -72,9 +77,7 @@ extern enum MORPHOLOGY
 	CLOSING
 };
 
-enum class CTview {
-	axial = 0, coronal, sagittal
-};
+
 
 extern "C"
 void computeHist(uint16* d_HU, int* d_hist, uint3 WHD);

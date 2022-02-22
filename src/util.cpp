@@ -93,14 +93,9 @@ void readDCMFiles_for_pixelSpacing(std::vector<std::string>& lists, glm::vec3* p
 		return;
 	}
 
-	// [ w, h, d, c ]
+	//! [ w, h, d, c ]
 	if (volume_size != nullptr)
 		*volume_size = glm::ivec4(0, 0, lists.size(), 0);
-
-	Sint16 r_pvmin = 10000;
-	Sint16 r_pvmax = -10000;
-	Sint16 g_PVMin = 10000;
-	Sint16 g_PVMax = -10000;
 
 	bool once_volume_position = true;
 	for (int i = 0; i < lists.size(); i++) {
@@ -308,9 +303,6 @@ void readDCMFiles_for_pixelSpacing(std::vector<std::string>& lists, glm::vec3* p
 		(*pixel_spacing).z = abs(voxel_depth_size);
 	}
 
-	std::cout << "PVMin = " << g_PVMin << std::endl;
-	std::cout << "PVMax = " << g_PVMax << std::endl;
-
 	std::cout << "volume_position=" << (*volume_position).x << ", " << (*volume_position).y << ", " << (*volume_position).z << std::endl;
 	std::cout << "pixel_spacing=" << (*pixel_spacing).x << ", " << (*pixel_spacing).y << ", " << (*pixel_spacing).z << std::endl;
 
@@ -484,7 +476,7 @@ void exportBMP(uint16* d_HU, glm::ivec4 windowSize, std::string fName)
 	byte* h_slice_mask = new byte[windowSize.x * windowSize.y];
 
 	for (int z = 0; z < windowSize.z; z++) {
-		std::cout << "DCM row = " << z + 1 << std::endl;
+		//std::cout << "DCM row = " << z + 1 << std::endl;
 
 		try {
 			memcpy(h_slice, d_HU + z * windowSize.x * windowSize.y, sizeof(uint16)*windowSize.x * windowSize.y);
@@ -544,41 +536,64 @@ void exportBMP(uint16* d_HU, glm::ivec4 windowSize, std::string fName)
 }
 
 
-void computeFillSpace(uint16* h_res_buffer, std::vector<glm::vec2> lineBuffer, uint idx, glm::vec3 volume_size)
+void computeFillSpace(uint16* h_res_buffer, std::vector<glm::vec2> lineBuffer, uint idx, glm::vec3 volume_size, CTview view)
 {
+	uint32 line_size = lineBuffer.size();
+	if (!(0 < line_size))
+		return;
+
 	// 2D Polygon Fill
 	dim3 fill_blockSize = dim3(32, 16, 1);
+
+	//dim3 fill_gridSize = dim3(iDivUp(volume_size.x, fill_blockSize.x), iDivUp(volume_size.y, fill_blockSize.y), iDivUp(1 << (int)ceil(log2((float)volume_size.z*0.5f)), fill_blockSize.z));
 	dim3 fill_gridSize = dim3(iDivUp(volume_size.x, fill_blockSize.x), iDivUp(volume_size.y, fill_blockSize.y), 1);
+	if (view == CTview::sagittal) {
+		fill_blockSize = dim3(1, 32, 16);
+		fill_gridSize = dim3(1, iDivUp(volume_size.y, fill_blockSize.y), iDivUp(volume_size.z, fill_blockSize.z));
+	}
+	else if (view == CTview::coronal) {
+		fill_blockSize = dim3(32, 1, 16);
+		fill_gridSize = dim3(iDivUp(volume_size.x, fill_blockSize.x), 1, iDivUp(volume_size.z, fill_blockSize.z));
+	}
+
 	uint3 grid_size = make_uint3(volume_size.x, volume_size.y, volume_size.z);
 	float2* d_contour = nullptr;
 	uint16* d_res_buffer = nullptr;
 	cudaMalloc((void**)&d_res_buffer, grid_size.x*grid_size.y*grid_size.z * sizeof(uint16));
 	cudaMemcpy(d_res_buffer, h_res_buffer, grid_size.x*grid_size.y*grid_size.z * sizeof(uint16), cudaMemcpyHostToDevice);
 
-
-	uint32 line_size = lineBuffer.size();
-	if (0 < line_size)
-	{
-		float2* h_contour = new float2[line_size];
-		for (int i = 0; i < line_size; i++) {
-			auto pt = lineBuffer[i];
-			h_contour[i] = make_float2(pt.x, pt.y);
-		}
-		checkCudaErrors(cudaMalloc((void**)&d_contour, line_size * sizeof(float2)));
-		checkCudaErrors(cudaMemcpy(d_contour, h_contour, line_size * sizeof(float2), cudaMemcpyHostToDevice));
-
-		launch_polygon_fill_2D(fill_gridSize, fill_blockSize, d_res_buffer, idx, grid_size, d_contour, line_size);
-
-		delete[] h_contour;
-		cudaFree(d_contour);
+	float2* h_contour = new float2[line_size];
+	for (int i = 0; i < line_size; i++) {
+		auto pt = lineBuffer[i];
+		h_contour[i] = make_float2(pt.x, pt.y);
 	}
+	checkCudaErrors(cudaMalloc((void**)&d_contour, line_size * sizeof(float2)));
+	checkCudaErrors(cudaMemcpy(d_contour, h_contour, line_size * sizeof(float2), cudaMemcpyHostToDevice));
+
+	launch_polygon_fill_2D(fill_gridSize, fill_blockSize, d_res_buffer, idx, grid_size, d_contour, line_size, view);
+
+	delete[] h_contour;
+	cudaFree(d_contour);
 	
-	fill_blockSize = dim3(32, 16, 2);
-	fill_gridSize = dim3(iDivUp(volume_size.x, fill_blockSize.x), iDivUp(volume_size.y, fill_blockSize.y), iDivUp(1 << (int)ceil(log2((float)volume_size.z*0.5f)), fill_blockSize.z));
-
-	/*std::cerr << fill_gridSize.x << ", " << fill_gridSize.y << ", " << fill_gridSize.z << std::endl;
-	launch_inverse_depth_volume(fill_gridSize, fill_blockSize, (uint16*)res_buffer, res_buffer, grid_size, (uint32)(grid_size.z*0.5f));*/
-
 	cudaMemcpy(h_res_buffer, d_res_buffer, grid_size.x*grid_size.y*grid_size.z * sizeof(uint16), cudaMemcpyDeviceToHost);
 	cudaFree(d_res_buffer);
+}
+
+void arr_logical_and(uint16*& dst, uint16*& buf, glm::vec3 volume_size) {
+	uint3 grid_size = make_uint3(volume_size.x, volume_size.y, volume_size.z);
+	uint16* d_dst = nullptr, *d_buf = nullptr;
+	cudaMalloc((void**)&d_dst, sizeof(uint16) * grid_size.x * grid_size.y * grid_size.z);
+	cudaMemcpy(d_dst, dst, sizeof(uint16) * grid_size.x * grid_size.y * grid_size.z, cudaMemcpyHostToDevice);
+	cudaMalloc((void**)&d_buf, sizeof(uint16) * grid_size.x * grid_size.y * grid_size.z);
+	cudaMemcpy(d_buf, buf, sizeof(uint16) * grid_size.x * grid_size.y * grid_size.z, cudaMemcpyHostToDevice);
+
+	dim3 blockSize = dim3(32, 16, 2);
+	dim3 gridSize = dim3(iDivUp(volume_size.x, blockSize.x), iDivUp(volume_size.y, blockSize.y), iDivUp(1 << (int)ceil(log2((float)volume_size.z)), blockSize.z));
+
+	launch_logical_and(gridSize, blockSize, d_dst, d_buf, grid_size);
+
+	cudaMemcpy(dst, d_dst, sizeof(uint16) * grid_size.x * grid_size.y * grid_size.z, cudaMemcpyDeviceToHost);
+
+	cudaFree(d_dst);
+	cudaFree(d_buf);
 }

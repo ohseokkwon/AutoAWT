@@ -2,11 +2,11 @@
 
 void QHull::initialize()
 {
-    drawablePoints.clear();
+    hull.clear();
 
 	//generateHull();
 
-	javisHull();
+	jarvisHull();
 }
 
 vector<glm::vec2> QHull::getPointCloud()
@@ -17,7 +17,7 @@ vector<glm::vec2> QHull::getPointCloud()
 
 vector<glm::vec2> QHull::getDrawablePoints()
 {
-    return drawablePoints;
+    return hull;
 }
 
 void QHull::setPointCloud(uint16* volume_2d, glm::ivec4 volume_size, int idx, CTview view)
@@ -33,17 +33,17 @@ void QHull::setPointCloud(uint16* volume_2d, glm::ivec4 volume_size, int idx, CT
 	}
 	else if (view == CTview::sagittal) {
 		for (int y = 0; y < volume_size.y; y++) {
-			for (int x = 0; x < volume_size.z; x++) {
-				if (0 < volume_2d[x*volume_size.x*volume_size.y + y * volume_size.x + idx])
-					pointCloud.push_back(glm::vec2(x, y));
+			for (int z = 0; z < volume_size.z; z++) {
+				if (0 < volume_2d[z*volume_size.x*volume_size.y + y * volume_size.x + idx])
+					pointCloud.push_back(glm::vec2(z, y));
 			}
 		}
 	}
 	else if (view == CTview::coronal) {
-		for (int y = 0; y < volume_size.z; y++) {
+		for (int z = 0; z < volume_size.z; z++) {
 			for (int x = 0; x < volume_size.x; x++) {
-				if (0 < volume_2d[y*volume_size.x*volume_size.y + idx * volume_size.x + x])
-					pointCloud.push_back(glm::vec2(x, y));
+				if (0 < volume_2d[z*volume_size.x*volume_size.y + idx * volume_size.x + x])
+					pointCloud.push_back(glm::vec2(x, z));
 			}
 		}
 	}
@@ -107,8 +107,8 @@ void QHull::quickHull(vector<glm::vec2> a, int n, glm::vec2 p1, glm::vec2 p2, in
 	// of L to the convex hull. 
 	if (ind == -1)
 	{
-		drawablePoints.push_back(p1);
-		drawablePoints.push_back(p2);
+		hull.push_back(p1);
+		hull.push_back(p2);
 		return;
 	}
 
@@ -160,37 +160,58 @@ bool ccw(glm::vec2 O, glm::vec2 A, glm::vec2 B) {
 	else return false;
 }
 
-void QHull::javisHull()
+int orientation(glm::vec2 p, glm::vec2 q, glm::vec2 r)
+{
+	int val = (q.y - p.y) * (r.x - q.x) -
+		(q.x - p.x) * (r.y - q.y);
+
+	if (val == 0) return 0;  // collinear
+	return (val > 0) ? 1 : 2; // clock or counterclock wise
+}
+
+void QHull::jarvisHull()
 {
 	int n = pointCloud.size();
 	auto a = pointCloud;
-	// a[i].second -> y-coordinate of the ith point 
 	if (n < 3)
 	{
 		cout << "Convex hull not possible\n";
 		return;
 	}
 
-	// Finding the point with minimum and 
-	// maximum x-coordinate 
-	int min_x = 0, max_x = 0;
+	// Find the leftmost point
+	int l = 0;
 	for (int i = 1; i < n; i++)
+		if (a[i].x < a[l].x)
+			l = i;
+
+	// Start from leftmost point, keep moving counterclockwise
+	// until reach the start point again.  This loop runs O(h)
+	// times where h is number of points in result or output.
+	int p = l, q;
+	do
 	{
-		if (a[i].x < a[min_x].x)
-			min_x = i;
-		if (a[i].x > a[max_x].x)
-			max_x = i;
-	}
-	
-	drawablePoints.push_back(a[min_x]);
-	drawablePoints.push_back(a[max_x]);
-	for (int i = 2; i < n; ++i) {
-		while (drawablePoints.size() > 1) {
-			glm::vec2 sec = drawablePoints.back(); drawablePoints.pop_back();
-			glm::vec2 fir = drawablePoints.back();
-			if (!ccw(fir, sec, a[i])) { drawablePoints.push_back(sec); break; }
-			//sec이 적합한지 아닌지 판정
+		// Add current point to result
+		hull.push_back(a[p]);
+
+		// Search for a point 'q' such that orientation(p, q,
+		// x) is counterclockwise for all points 'x'. The idea
+		// is to keep track of last visited most counterclock-
+		// wise point in q. If any point 'i' is more counterclock-
+		// wise than q, then update q.
+		q = (p + 1) % n;
+		for (int i = 0; i < n; i++)
+		{
+			// If i is more counterclockwise than current q, then
+			// update q
+			if (orientation(a[p], a[i], a[q]) == 2)
+				q = i;
 		}
-		drawablePoints.push_back(a[i]);
-	}
+
+		// Now q is the most counterclockwise with respect to p
+		// Set p as q for next iteration, so that q is added to
+		// result 'hull'
+		p = q;
+
+	} while (p != l);  // While we don't come to first point
 }

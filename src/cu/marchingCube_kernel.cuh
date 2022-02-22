@@ -261,89 +261,44 @@ __device__ float isLeft(float2 P0, float2 P1, float2 P2)
 		- (P2.x - P0.x) * (P1.y - P0.y));
 }
 
-// Given three collinear points p, q, r, the function checks if
-// point q lies on line segment 'pr'
-__device__ bool onSegment(float2 p, float2 q, float2 r)
-{
-	if (q.x <= max(p.x, r.x) && q.x >= min(p.x, r.x) &&
-		q.y <= max(p.y, r.y) && q.y >= min(p.y, r.y))
-		return true;
-	return false;
-}
-
-// 0 --> p, q and r are collinear
-// 1 --> Clockwise
-// 2 --> Counterclockwise
-__device__ int orientation(float2 p, float2 q, float2 r)
-{
-	int val = (q.y - p.y) * (r.x - q.x) -
-		(q.x - p.x) * (r.y - q.y);
-
-	if (val == 0) return 0; // collinear
-	return (val > 0) ? 1 : 2; // clock or counterclock wise
-}
-
-// The function that returns true if line segment 'p1q1'
-// and 'p2q2' intersect.
-__device__ bool doIntersect(float2 p1, float2 q1, float2 p2, float2 q2)
-{
-	// Find the four orientations needed for general and
-	// special cases
-	int o1 = orientation(p1, q1, p2);
-	int o2 = orientation(p1, q1, q2);
-	int o3 = orientation(p2, q2, p1);
-	int o4 = orientation(p2, q2, q1);
-
-	// General case
-	if (o1 != o2 && o3 != o4)
-		return true;
-
-	// Special Cases
-	// p1, q1 and p2 are collinear and p2 lies on segment p1q1
-	if (o1 == 0 && onSegment(p1, p2, q1)) return true;
-
-	// p1, q1 and p2 are collinear and q2 lies on segment p1q1
-	if (o2 == 0 && onSegment(p1, q2, q1)) return true;
-
-	// p2, q2 and p1 are collinear and p1 lies on segment p2q2
-	if (o3 == 0 && onSegment(p2, p1, q2)) return true;
-
-	// p2, q2 and q1 are collinear and q1 lies on segment p2q2
-	if (o4 == 0 && onSegment(p2, q1, q2)) return true;
-
-	return false; // Doesn't fall in any of the above cases
-}
 
 __global__ void
-polygon_fill_2D(uint16* out, uint depth, uint3 gridSize, float2* contour, uint contour_size)
+polygon_fill_2D(uint16* out, uint depth, uint3 gridSize, float2* line_vector, uint line_size, CTview view)
 {
 	// X-Y기준으로 2D 검사
 	uint32 tx = blockIdx.x * blockDim.x + threadIdx.x;
 	uint32 ty = blockIdx.y * blockDim.y + threadIdx.y;
-	if (tx >= gridSize.x || ty >= gridSize.y || depth >= gridSize.z)
-		return;
+	if (view == CTview::sagittal)
+		tx = blockIdx.z * blockDim.z + threadIdx.z;
+	else if (view == CTview::coronal)
+		ty = blockIdx.z * blockDim.z + threadIdx.z;
+
+	if (view == CTview::axial) {
+		if (tx >= gridSize.x || ty >= gridSize.y || depth >= gridSize.z)
+			return;
+	}
+	else if (view == CTview::sagittal) {
+		if (depth >= gridSize.x || ty >= gridSize.y || tx >= gridSize.z)
+			return;
+	}
+	else if (view == CTview::coronal) {
+		if (tx >= gridSize.x || depth >= gridSize.y || ty >= gridSize.z)
+			return;
+	}
 
 	uint32 idx = tx + (ty * blockDim.x * gridDim.x) + (depth * blockDim.x * gridDim.x * blockDim.y * gridDim.y);
 	float2 q = make_float2(tx, ty);
-	//q = make_float2(q.x / (float)gridSize.x * 2.0f - 1.0f, (gridSize.y - q.y) / (float)gridSize.y * 2.0f - 1.0f);
+	if (view == CTview::sagittal)
+		idx = depth + (ty * gridSize.x) + (tx * gridSize.x * gridSize.y);
+	else if (view == CTview::coronal)
+		idx = tx + (depth * gridSize.x) + (ty * gridSize.x * gridSize.y);
 
-	int    wn =  0;
-	float2 extreme = make_float2( 1e+5, q.y );
-	for (int i = 0; i < contour_size; i++) {
-		float2 v1 = contour[ i % contour_size];
-		float2 v2 = contour[(i + 1) % contour_size];
+	int    wn = 0;
+	for (int i = 0; i < line_size; i++) {
+		float2 v1 = line_vector[i];
+		float2 v2 = line_vector[(i + 1) % line_size];
 
-		if (doIntersect(v1, v2, q, extreme))
-		{
-			if (orientation(v1, q, v2) == 0) {
-				out[idx] = onSegment(v1, q, v2) ? 1 : 0;
-				return;
-			}
-
-			wn++;
-		}
-
-		/*if (v1.y <= q.y) {
+		if (v1.y <= q.y) {
 			if (v2.y > q.y)
 				if (isLeft(v1, v2, q) > 0)
 					++wn;
@@ -352,11 +307,29 @@ polygon_fill_2D(uint16* out, uint depth, uint3 gridSize, float2* contour, uint c
 			if (v2.y <= q.y)
 				if (isLeft(v1, v2, q) < 0)
 					--wn;
-		}*/
+		}
 	}
 
-	out[idx] = (wn & 1) ? 1 : 0;
+	out[idx] = (wn > 0) ? 1 : 0;
 }
+
+
+__global__ void
+cu_logical_and(uint16* dst, uint16* buf, uint3 gridSize)
+{
+	uint32 tx = blockIdx.x * blockDim.x + threadIdx.x;
+	uint32 ty = blockIdx.y * blockDim.y + threadIdx.y;
+	uint32 tz = blockIdx.z * blockDim.z + threadIdx.z;
+
+	if (tx >= gridSize.x || ty >= gridSize.y || tz >= gridSize.z)
+		return;
+
+	uint32 idx = tx + (ty * gridSize.x) + (tz * gridSize.x * gridSize.y);
+
+	dst[idx] = ((dst[idx] > 0) && (buf[idx] > 0)) ? 1 : 0;
+}
+
+
 
 __global__ void
 volume_metric_3D(uint16* in_volume, uint3 gridSize, uint32* out_2d)

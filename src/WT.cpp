@@ -30,55 +30,6 @@ WT::WT(std::string save_path, const glm::vec3 volume_size, const glm::vec3 voxel
 
 	m_h_ChamberMask = new uint16[vol1DSize];
 	memset(m_h_ChamberMask, 0, vol1DSize * sizeof(uint16));
-	
-
-	//float calc_time = 0.0f;
-	//clock_t st_time = clock();
-
-	//uint16* ptr_wall = (uint16*)wallMask;
-	//// Z axis
-	//for (int z = 0; z < volume_size.z; z++) {
-	//	std::vector<Point_2> points, result;
-
-	//	for (int y = 0; y < volume_size.y; y++) {
-	//		for (int x = 0; x < volume_size.x; x++) {
-	//			if (*(ptr_wall + int(volume_size.x*volume_size.y*z + volume_size.x*y + x)) > 0)
-	//				points.push_back(Point_2(x, y));
-	//		}
-	//	}
-	//	CGAL::convex_hull_2(points.begin(), points.end(), std::back_inserter(result));
-
-	//	std::cout << result.size() << std::endl;
-	//}
-	//// Y axis
-	//for (int y = 0; y < volume_size.y; y++) {
-	//	std::vector<Point_2> points, result;
-	//	for (int z = 0; z < volume_size.z; z++) {
-	//		for (int x = 0; x < volume_size.x; x++) {
-	//			if (*(ptr_wall + int(volume_size.x*volume_size.y*z + volume_size.x*y + x)) > 0)
-	//				points.push_back(Point_2(x, z));
-	//		}
-	//	}
-	//	CGAL::convex_hull_2(points.begin(), points.end(), std::back_inserter(result));
-
-	//	std::cout << result.size() << std::endl;
-	//}
-	//// X axis
-	//for (int x = 0; x < volume_size.x; x++) {
-	//	std::vector<Point_2> points, result;
-	//	for (int z = 0; z < volume_size.z; z++) {
-	//		for (int y = 0; y < volume_size.y; y++) {
-	//			if (*(ptr_wall + int(volume_size.x*volume_size.y*z + volume_size.x*y + x)) > 0)
-	//				points.push_back(Point_2(z, y));
-	//		}
-	//	}
-	//	CGAL::convex_hull_2(points.begin(), points.end(), std::back_inserter(result));
-
-	//	std::cout << result.size() << std::endl;
-	//}
-	//clock_t ed_time = clock();
-	//calc_time = (ed_time - st_time);
-	//std::cerr << "Finished convex-hull calculation : " << calc_time / 1e3f << " s \n";
 
 	cudaMemcpy(m_d_ConvexMask, convexMask, vol1DSize * sizeof(uint16), cudaMemcpyHostToDevice);
 	// 초기세팅
@@ -439,42 +390,28 @@ void WT::evalWT()
 
 	dim3 blockSize = dim3(256, 1, 1);
 	dim3 gridSize = dim3(iDivUp(endoVCnt, blockSize.x), 1, 1);
+	
+	//! endo thickness
+	{
+		float4* d_endoVertices = nullptr;
+		cudaMalloc((void**)&d_endoVertices, endoVCnt * sizeof(float4));
+		cudaMemcpy(d_endoVertices, endoVertices, endoVCnt * sizeof(float4), cudaMemcpyHostToDevice);
 
-	//m_voxel_spacing = glm::vec3(0.476, 0.476, 0.5);
-	//// 5 patient
-	//m_voxel_spacing = glm::vec3(0.412109, 0.412109, 0.5);
-	//m_voxel_spacing = glm::vec3(0.463, 0.463, 0.5);
-	//m_voxel_size = glm::vec3(0.359375, 0.359375, 0.625006);
-	//m_voxel_size = glm::vec3(0.349609, 0.349609, 0.699951);
-	//m_voxel_size = glm::vec3(0.46, 0.46, 0.5);
-	//m_voxel_size = glm::vec3(0.462891, 0.462891, 0.499994);
-	//m_voxel_size = glm::vec3(0.567, 0.567, 0.5);
-	//m_voxel_size = glm::vec3(0.361328, 0.361328, 0.625002);
-	
-	float4* d_endoVertices = nullptr, *d_epiVertices = nullptr;
-	cudaMalloc((void**)&d_endoVertices, endoVCnt * sizeof(float4));
-	cudaMemcpy(d_endoVertices, endoVertices, endoVCnt * sizeof(float4), cudaMemcpyHostToDevice);
-	cudaMalloc((void**)&d_epiVertices, epiVCnt * sizeof(float4));
-	cudaMemcpy(d_epiVertices, epiVertices, epiVCnt * sizeof(float4), cudaMemcpyHostToDevice);
+		compute_thickness(gridSize, blockSize, uVoxSize, m_d_WallMask, vectorFields, 0, d_endoVertices, m_d_normal, endoVCnt, make_float3(m_voxel_spacing.x, m_voxel_spacing.y, m_voxel_spacing.z));
 
-	compute_thickness(gridSize, blockSize, uVoxSize, m_d_WallMask, vectorFields, 0, d_endoVertices, m_d_normal, endoVCnt, make_float3(m_voxel_spacing.x, m_voxel_spacing.y, m_voxel_spacing.z));
-	compute_thickness(gridSize, blockSize, uVoxSize, m_d_WallMask, vectorFields, 0, d_epiVertices, m_d_normal, epiVCnt, make_float3(m_voxel_spacing.x, m_voxel_spacing.y, m_voxel_spacing.z));
-	
-	cudaMemcpy(endoVertices, d_endoVertices, endoVCnt * sizeof(float4), cudaMemcpyDeviceToHost);
-	cudaMemcpy(epiVertices, d_epiVertices, epiVCnt * sizeof(float4), cudaMemcpyDeviceToHost);
-	// Memcpy device thick to host thick
-	float3* m_h_normal = new float3[endoVCnt];
-	cudaMemcpy(m_h_normal, m_d_normal, endoVCnt * sizeof(float3), cudaMemcpyDeviceToHost);
-	
-	savePLT(m_save_path + "\\endo", endoVertices, endoVCnt, &m_endo_vertices_list);
-	savePLT(m_save_path + "\\epi", epiVertices, epiVCnt);
+		cudaMemcpy(endoVertices, d_endoVertices, endoVCnt * sizeof(float4), cudaMemcpyDeviceToHost);
 
-	cudaFree(d_endoVertices);
-	cudaFree(d_epiVertices);
-	
+
+		// Memcpy device thick to host thick
+		float3* m_h_normal = new float3[endoVCnt];
+		cudaMemcpy(m_h_normal, m_d_normal, endoVCnt * sizeof(float3), cudaMemcpyDeviceToHost);
+
+		savePLT(m_save_path + "\\WT-endo", endoVertices, endoVCnt, &m_endo_vertices_list);
+
+		cudaFree(d_endoVertices);
+	}
 	cudaFree(vectorFields);
 	free(endoVertices);
-	free(epiVertices);
 }
 
 void WT::savePLT(std::string fname, float4* vertices, int elemCnt, std::vector<float4>* vertices_list)
