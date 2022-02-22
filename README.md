@@ -15,7 +15,7 @@ The code was written by [Oh-Seok Kwon](link) with support from [Hui-Nam Pak]().
   - CUDA 10.0 ([download link](https://developer.nvidia.com/cuda-10.0-download-archive)).
 
 - Datasets repository
-  - The sample mask images for AutoAWT in [datasets/Phantom](/datasets/Phantom).
+  - The sample datasets (2 CT and segmented 320 atrial wall binary mask images) for AutoAWT in [datasets/Phantom](/datasets/Phantom).
 
 ### Run
 - You can build & run (Visual studio 2015).
