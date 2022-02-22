@@ -1,0 +1,442 @@
+﻿  Compiling CUDA source file src\cu\marchingCube_kernel.cu...
+  Compiling CUDA source file src\cu\util_3D.cu...
+  Compiling CUDA source file src\cu\WT_kernel.cu...
+  
+  C:\Users\oskwon\Documents\GitHub\AutoAWT>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin\nvcc.exe" -gencode=arch=compute_35,code=\"sm_35,compute_35\" --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64" -x cu  -I./SDKs/include -I./SDKs/include/cuda -I"./SDKs/include/GL/vs2015 x64" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include"     --keep-dir x64\Release -maxrregcount=0  --machine 64 --compile -cudart static     -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Fdx64\Release\vc140.pdb /FS /Zi  /MD " -o x64\Release\marchingCube_kernel.cu.obj "C:\Users\oskwon\Documents\GitHub\AutoAWT\src\cu\marchingCube_kernel.cu" 
+  
+  C:\Users\oskwon\Documents\GitHub\AutoAWT>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin\nvcc.exe" -gencode=arch=compute_35,code=\"sm_35,compute_35\" --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64" -x cu  -I./SDKs/include -I./SDKs/include/cuda -I"./SDKs/include/GL/vs2015 x64" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include"     --keep-dir x64\Release -maxrregcount=0  --machine 64 --compile -cudart static     -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Fdx64\Release\vc140.pdb /FS /Zi  /MD " -o x64\Release\util_3D.cu.obj "C:\Users\oskwon\Documents\GitHub\AutoAWT\src\cu\util_3D.cu" 
+  
+  C:\Users\oskwon\Documents\GitHub\AutoAWT>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin\nvcc.exe" -gencode=arch=compute_35,code=\"sm_35,compute_35\" --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64" -x cu  -I./SDKs/include -I./SDKs/include/cuda -I"./SDKs/include/GL/vs2015 x64" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include"     --keep-dir x64\Release -maxrregcount=0  --machine 64 --compile -cudart static     -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Fdx64\Release\vc140.pdb /FS /Zi  /MD " -o x64\Release\WT_kernel.cu.obj "C:\Users\oskwon\Documents\GitHub\AutoAWT\src\cu\WT_kernel.cu" 
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(825): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(1760): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(2622): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(3461): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(4404): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(5302): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(6213): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7094): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7893): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h(773): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h(1629): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\device_double_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\sm_20_intrinsics.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\sm_20_intrinsics.h(926): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include\cuda_fp16.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(825): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(1760): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(2622): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(3461): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(4404): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(5302): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(6213): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7094): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7893): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h(773): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h(1629): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\device_double_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\sm_20_intrinsics.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\sm_20_intrinsics.h(926): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include\cuda_fp16.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(825): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(1760): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(2622): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(3461): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(4404): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(5302): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(6213): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7094): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7893): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h(773): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h(1629): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\device_double_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\sm_20_intrinsics.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\sm_20_intrinsics.h(926): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include\cuda_fp16.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/loglevel.h(191): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/loglevel.h(194): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/layout.h(584): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/spi/filter.h(136): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(227): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(237): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(240): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(243): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/helpers/snprintf.h(54): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/offile.h(831): warning : statement is unreachable
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/offile.h(831): warning : variable "result" is used before its value is set
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1045): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1047): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1050): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1052): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1055): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1059): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1061): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1063): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1065): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dchashdi.h(109): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dchashdi.h(186): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpcache.h(112): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(152): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(155): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(159): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(162): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/loglevel.h(191): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/loglevel.h(194): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/layout.h(584): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/spi/filter.h(136): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(227): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(237): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(240): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(243): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/helpers/snprintf.h(54): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/offile.h(831): warning : statement is unreachable
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/offile.h(831): warning : variable "result" is used before its value is set
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1045): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1047): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1050): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1052): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1055): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1059): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1061): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1063): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1065): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dchashdi.h(109): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dchashdi.h(186): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpcache.h(112): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(152): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(155): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(159): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(162): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/loglevel.h(191): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/loglevel.h(194): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/layout.h(584): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/spi/filter.h(136): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(227): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(237): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(240): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(243): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/helpers/snprintf.h(54): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/offile.h(831): warning : statement is unreachable
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/offile.h(831): warning : variable "result" is used before its value is set
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1045): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1047): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1050): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1052): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1055): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1059): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1061): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1063): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1065): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dchashdi.h(109): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dchashdi.h(186): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpcache.h(112): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(152): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(155): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(159): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(162): warning : field of class type without a DLL interface used in a class with a DLL interface
+c:\users\oskwon\documents\github\autoawt\src\cu\../Ext_headers.h(66): warning : a storage class may not be specified here
+c:\users\oskwon\documents\github\autoawt\src\cu\../Ext_headers.h(72): warning : a storage class may not be specified here
+c:\users\oskwon\documents\github\autoawt\src\cu\marchingCube_kernel.cuh(55): warning : variable "search_limit" was declared but never referenced
+c:\users\oskwon\documents\github\autoawt\src\cu\marchingCube_kernel.cuh(56): warning : variable "search_count" was declared but never referenced
+c:\users\oskwon\documents\github\autoawt\src\cu\marchingCube_kernel.cuh(72): warning : variable "t" was declared but never referenced
+c:\users\oskwon\documents\github\autoawt\src\cu\marchingCube_kernel.cuh(363): warning : variable "idx" was declared but never referenced
+c:\users\oskwon\documents\github\autoawt\sdks\include\gl\vs2015 x64\glm\detail\type_vec4.inl(418): warning : calling a __host__ function from a __host__ __device__ function is not allowed
+c:\users\oskwon\documents\github\autoawt\src\cu\../Ext_headers.h(66): warning : a storage class may not be specified here
+c:\users\oskwon\documents\github\autoawt\src\cu\../Ext_headers.h(72): warning : a storage class may not be specified here
+c:\users\oskwon\documents\github\autoawt\src\cu\util_3D.cuh(18): warning : variable "tid" was declared but never referenced
+c:\users\oskwon\documents\github\autoawt\src\cu\util_3D.cuh(35): warning : variable "idx" was declared but never referenced
+c:\users\oskwon\documents\github\autoawt\src\cu\util_3D.cuh(61): warning : pointless comparison of unsigned integer with zero
+c:\users\oskwon\documents\github\autoawt\src\cu\util_3D.cuh(61): warning : pointless comparison of unsigned integer with zero
+c:\users\oskwon\documents\github\autoawt\src\cu\util_3D.cuh(61): warning : pointless comparison of unsigned integer with zero
+c:\users\oskwon\documents\github\autoawt\src\cu\util_3D.cuh(69): warning : variable "minIdx" was declared but never referenced
+c:\users\oskwon\documents\github\autoawt\src\cu\util_3D.cuh(119): warning : variable "tx" was declared but never referenced
+c:\users\oskwon\documents\github\autoawt\src\cu\util_3D.cuh(120): warning : variable "ty" was declared but never referenced
+c:\users\oskwon\documents\github\autoawt\sdks\include\gl\vs2015 x64\glm\detail\type_vec4.inl(418): warning : calling a __host__ function from a __host__ __device__ function is not allowed
+c:\users\oskwon\documents\github\autoawt\src\cu\../Ext_headers.h(66): warning : a storage class may not be specified here
+c:\users\oskwon\documents\github\autoawt\src\cu\../Ext_headers.h(72): warning : a storage class may not be specified here
+c:\users\oskwon\documents\github\autoawt\src\cu\WT_kernel.cuh(357): warning : variable "voxel" was declared but never referenced
+c:\users\oskwon\documents\github\autoawt\src\cu\WT_kernel.cuh(390): warning : variable "voxel" was declared but never referenced
+c:\users\oskwon\documents\github\autoawt\src\cu\WT_kernel.cuh(520): warning : variable "integrate_cnt" was declared but never referenced
+C:/Users/oskwon/Documents/GitHub/AutoAWT/src/cu/WT_kernel.cu(205): warning : variable "Ld_ptr" was set but never used
+C:/Users/oskwon/Documents/GitHub/AutoAWT/src/cu/WT_kernel.cu(206): warning : variable "Rd_ptr" was declared but never referenced
+C:/Users/oskwon/Documents/GitHub/AutoAWT/src/cu/WT_kernel.cu(235): warning : variable "argmax_ptr" was declared but never referenced
+c:\users\oskwon\documents\github\autoawt\sdks\include\gl\vs2015 x64\glm\detail\type_vec4.inl(418): warning : calling a __host__ function from a __host__ __device__ function is not allowed
+c:\users\oskwon\documents\github\autoawt\src\cu\WT_kernel.cuh(247): warning : conversion from pointer to smaller integer
+C:/Users/oskwon/Documents/GitHub/AutoAWT/src/cu/WT_kernel.cu(189): warning : variable "BLOCK" was declared but never referenced
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(825): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(1760): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(2622): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(3461): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(4404): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(5302): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(6213): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7094): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7893): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h(773): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h(1629): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\device_double_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\sm_20_intrinsics.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\sm_20_intrinsics.h(926): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include\cuda_fp16.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(825): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(1760): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(2622): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(3461): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(4404): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(5302): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(6213): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7094): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7893): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h(773): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h(1629): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\device_double_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\sm_20_intrinsics.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\sm_20_intrinsics.h(926): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include\cuda_fp16.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(825): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(1760): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(2622): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(3461): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(4404): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(5302): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(6213): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7094): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7893): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h(773): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt/device_functions.h(1629): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\device_double_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\sm_20_intrinsics.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\sm_20_intrinsics.h(926): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include\cuda_fp16.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/loglevel.h(191): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/loglevel.h(194): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/layout.h(584): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/spi/filter.h(136): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(227): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(237): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(240): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(243): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/helpers/snprintf.h(54): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/offile.h(831): warning : statement is unreachable
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/offile.h(831): warning : variable "result" is used before its value is set
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1045): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1047): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1050): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1052): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1055): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1059): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1061): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1063): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1065): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dchashdi.h(109): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dchashdi.h(186): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpcache.h(112): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(152): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(155): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(159): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(162): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/loglevel.h(191): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/loglevel.h(194): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/layout.h(584): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/spi/filter.h(136): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(227): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(237): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(240): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(243): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/helpers/snprintf.h(54): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/offile.h(831): warning : statement is unreachable
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/offile.h(831): warning : variable "result" is used before its value is set
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1045): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1047): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1050): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1052): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1055): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1059): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1061): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1063): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1065): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dchashdi.h(109): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dchashdi.h(186): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpcache.h(112): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(152): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(155): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(159): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(162): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/loglevel.h(191): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/loglevel.h(194): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/layout.h(584): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/spi/filter.h(136): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(227): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(237): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(240): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/appender.h(243): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/oflog/helpers/snprintf.h(54): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/offile.h(831): warning : statement is unreachable
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/offile.h(831): warning : variable "result" is used before its value is set
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1045): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1047): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1050): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1052): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1055): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1059): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1061): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1063): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/ofstd/ofcmdln.h(1065): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dchashdi.h(109): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dchashdi.h(186): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpcache.h(112): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(152): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(155): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(159): warning : field of class type without a DLL interface used in a class with a DLL interface
+C:\Users\oskwon\Documents\GitHub\AutoAWT\SDKs\include\dcmtk/dcmdata/dcpixel.h(162): warning : field of class type without a DLL interface used in a class with a DLL interface
+c:\users\oskwon\documents\github\autoawt\src\cu\../Ext_headers.h(66): warning : a storage class may not be specified here
+c:\users\oskwon\documents\github\autoawt\src\cu\../Ext_headers.h(72): warning : a storage class may not be specified here
+c:\users\oskwon\documents\github\autoawt\src\cu\util_3D.cuh(61): warning : pointless comparison of unsigned integer with zero
+c:\users\oskwon\documents\github\autoawt\src\cu\util_3D.cuh(61): warning : pointless comparison of unsigned integer with zero
+c:\users\oskwon\documents\github\autoawt\src\cu\util_3D.cuh(61): warning : pointless comparison of unsigned integer with zero
+c:\users\oskwon\documents\github\autoawt\src\cu\../Ext_headers.h(66): warning : a storage class may not be specified here
+c:\users\oskwon\documents\github\autoawt\src\cu\../Ext_headers.h(72): warning : a storage class may not be specified here
+c:\users\oskwon\documents\github\autoawt\src\cu\../Ext_headers.h(66): warning : a storage class may not be specified here
+c:\users\oskwon\documents\github\autoawt\src\cu\../Ext_headers.h(72): warning : a storage class may not be specified here
+c:\users\oskwon\documents\github\autoawt\src\cu\WT_kernel.cuh(247): warning : conversion from pointer to smaller integer
+  util_3D.cu
+  marchingCube_kernel.cu
+  WT_kernel.cu
+C:/Users/oskwon/Documents/GitHub/AutoAWT/src/cu/util_3D.cu(12): warning C4018: '<': signed/unsigned mismatch
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(825): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(1760): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(2622): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(3461): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(4404): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(5302): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(6213): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7094): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7893): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(825): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(1760): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(2622): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(3461): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(4404): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(5302): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(6213): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7094): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7893): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:/Users/oskwon/Documents/GitHub/AutoAWT/src/cu/WT_kernel.cu(121): warning C4018: '<': signed/unsigned mismatch
+C:/Users/oskwon/Documents/GitHub/AutoAWT/src/cu/WT_kernel.cu(135): warning C4018: '>': signed/unsigned mismatch
+C:/Users/oskwon/Documents/GitHub/AutoAWT/src/cu/WT_kernel.cu(156): warning C4018: '<': signed/unsigned mismatch
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(825): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(1760): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(2622): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(3461): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(4404): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(5302): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(6213): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7094): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+c:\program files\nvidia gpu computing toolkit\cuda\v10.0\include\crt\math_functions.h(7893): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+  cuHistogram.cpp
+  crt/host_defines.h is an internal header file and must not be used directly.  Please use cuda_runtime_api.h or cuda_runtime.h instead.
+c:\users\oskwon\documents\github\autoawt\src\Ext_headers.h(71): warning C4091: 'extern ': ignored on left of 'Filter' when no variable is declared
+c:\users\oskwon\documents\github\autoawt\src\Ext_headers.h(78): warning C4091: 'extern ': ignored on left of 'MORPHOLOGY' when no variable is declared
+  main.cpp
+  crt/host_defines.h is an internal header file and must not be used directly.  Please use cuda_runtime_api.h or cuda_runtime.h instead.
+c:\users\oskwon\documents\github\autoawt\src\Ext_headers.h(71): warning C4091: 'extern ': ignored on left of 'Filter' when no variable is declared
+c:\users\oskwon\documents\github\autoawt\src\Ext_headers.h(78): warning C4091: 'extern ': ignored on left of 'MORPHOLOGY' when no variable is declared
+src\main.cpp(234): warning C4244: '=': conversion from 'clock_t' to 'float', possible loss of data
+src\main.cpp(241): warning C4244: '=': conversion from 'clock_t' to 'float', possible loss of data
+  MarchingCubes.cpp
+  crt/host_defines.h is an internal header file and must not be used directly.  Please use cuda_runtime_api.h or cuda_runtime.h instead.
+c:\users\oskwon\documents\github\autoawt\src\Ext_headers.h(71): warning C4091: 'extern ': ignored on left of 'Filter' when no variable is declared
+c:\users\oskwon\documents\github\autoawt\src\Ext_headers.h(78): warning C4091: 'extern ': ignored on left of 'MORPHOLOGY' when no variable is declared
+src\MarchingCubes.cpp(51): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\MarchingCubes.cpp(63): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+src\MarchingCubes.cpp(65): warning C4244: 'initializing': conversion from 'float' to 'uint32', possible loss of data
+src\MarchingCubes.cpp(96): warning C4244: '=': conversion from 'float' to 'uint32', possible loss of data
+src\MarchingCubes.cpp(132): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+src\MarchingCubes.cpp(188): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+src\MarchingCubes.cpp(198): warning C4244: 'initializing': conversion from 'float' to 'uint32', possible loss of data
+src\MarchingCubes.cpp(204): warning C4244: 'initializing': conversion from 'float' to 'uint32', possible loss of data
+src\MarchingCubes.cpp(263): warning C4244: 'initializing': conversion from 'clock_t' to 'float', possible loss of data
+src\MarchingCubes.cpp(281): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+src\MarchingCubes.cpp(282): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+src\MarchingCubes.cpp(294): warning C4018: '<': signed/unsigned mismatch
+src\MarchingCubes.cpp(299): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\MarchingCubes.cpp(300): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\MarchingCubes.cpp(386): warning C4018: '<': signed/unsigned mismatch
+src\MarchingCubes.cpp(400): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+src\MarchingCubes.cpp(440): warning C4305: 'initializing': truncation from 'double' to 'float'
+src\MarchingCubes.cpp(446): warning C4018: '<': signed/unsigned mismatch
+src\MarchingCubes.cpp(522): warning C4018: '<': signed/unsigned mismatch
+  QHull.cpp
+  crt/host_defines.h is an internal header file and must not be used directly.  Please use cuda_runtime_api.h or cuda_runtime.h instead.
+c:\users\oskwon\documents\github\autoawt\src\Ext_headers.h(71): warning C4091: 'extern ': ignored on left of 'Filter' when no variable is declared
+c:\users\oskwon\documents\github\autoawt\src\Ext_headers.h(78): warning C4091: 'extern ': ignored on left of 'MORPHOLOGY' when no variable is declared
+src\QHull.cpp(62): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+src\QHull.cpp(63): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+src\QHull.cpp(64): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+src\QHull.cpp(74): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+src\QHull.cpp(86): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+src\QHull.cpp(122): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+src\QHull.cpp(166): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+src\QHull.cpp(174): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  util.cpp
+  crt/host_defines.h is an internal header file and must not be used directly.  Please use cuda_runtime_api.h or cuda_runtime.h instead.
+c:\users\oskwon\documents\github\autoawt\src\Ext_headers.h(71): warning C4091: 'extern ': ignored on left of 'Filter' when no variable is declared
+c:\users\oskwon\documents\github\autoawt\src\Ext_headers.h(78): warning C4091: 'extern ': ignored on left of 'MORPHOLOGY' when no variable is declared
+src\util.cpp(235): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\util.cpp(238): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\util.cpp(258): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\util.cpp(259): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\util.cpp(260): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\util.cpp(292): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\util.cpp(296): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\util.cpp(297): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\util.cpp(276): warning C4101: 'ele2': unreferenced local variable
+src\util.cpp(382): warning C4101: 'palette': unreferenced local variable
+src\util.cpp(485): warning C4244: '=': conversion from 'uint16' to 'byte', possible loss of data
+src\util.cpp(541): warning C4267: 'initializing': conversion from 'size_t' to 'uint32', possible loss of data
+src\util.cpp(549): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+src\util.cpp(552): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+src\util.cpp(556): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+src\util.cpp(559): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+src\util.cpp(566): warning C4018: '<': signed/unsigned mismatch
+src\util.cpp(583): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+src\util.cpp(591): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  WT.cpp
+  crt/host_defines.h is an internal header file and must not be used directly.  Please use cuda_runtime_api.h or cuda_runtime.h instead.
+c:\users\oskwon\documents\github\autoawt\src\Ext_headers.h(71): warning C4091: 'extern ': ignored on left of 'Filter' when no variable is declared
+c:\users\oskwon\documents\github\autoawt\src\Ext_headers.h(78): warning C4091: 'extern ': ignored on left of 'MORPHOLOGY' when no variable is declared
+src\WT.cpp(16): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+src\WT.cpp(18): warning C4244: 'initializing': conversion from 'float' to 'uint32', possible loss of data
+src\WT.cpp(21): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+src\WT.cpp(61): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+src\WT.cpp(82): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+src\WT.cpp(110): warning C4305: 'argument': truncation from 'double' to 'float'
+src\WT.cpp(218): warning C4018: '<': signed/unsigned mismatch
+src\WT.cpp(228): warning C4018: '<': signed/unsigned mismatch
+src\WT.cpp(229): warning C4018: '<': signed/unsigned mismatch
+src\WT.cpp(231): warning C4244: '=': conversion from 'uint16' to 'byte', possible loss of data
+src\WT.cpp(203): warning C4474: 'sprintf_s' : too many arguments passed for format string
+  src\WT.cpp(203): note: placeholders and their parameters expect 1 variadic arguments, but 2 were provided
+src\WT.cpp(315): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+src\WT.cpp(361): warning C4018: '<': signed/unsigned mismatch
+src\WT.cpp(366): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+src\WT.cpp(370): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating code
+  All 1462 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  AutoAWT.vcxproj -> C:\Users\oskwon\Documents\GitHub\AutoAWT\x64\Release\AutoAWT.exe
+  AutoAWT.vcxproj -> C:\Users\oskwon\Documents\GitHub\AutoAWT\x64\Release\AutoAWT.pdb (Full PDB)
