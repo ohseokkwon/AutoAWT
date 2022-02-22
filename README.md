@@ -26,14 +26,12 @@ Step 2. select directory of DCM (datasets/Phantom/ct)
 
 Derived results
 ```
-Results {
-WT-endo.plt: Calculated wall thickness from endocardium to epicardium,
-WT(projected)-PatientID.plt: Wall thickness projected to surface mesh,
-WT(projected)-PatientID.stl: surface mesh,
-surface_mesh: Reconstructed surface mesh,
-Epi-Endo directory: Images labeled as endocardium, epicardium, and myocardium in binary images
-(pixel value 1: endocardium, 2: myocardium, 3: epicardium)
-}
+  - WT-endo.plt: Calculated wall thickness from endocardium to epicardium
+  - WT(projected)-PatientID.plt: Wall thickness projected to surface mesh
+  - WT(projected)-PatientID.stl: surface mesh
+  - surface_mesh: Reconstructed surface mesh
+  - Epi-Endo directory: Images labeled as endocardium, epicardium, and myocardium in binary images
+  - (pixel value 1: endocardium, 2: myocardium, 3: epicardium)
 ```
 
 # Citation
