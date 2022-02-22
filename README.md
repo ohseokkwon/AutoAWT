@@ -18,6 +18,23 @@ The code was written by [Oh-Seok Kwon](link) with support from [Hui-Nam Pak]().
   - The sample mask images for AutoAWT in [datasets/Phantom](/datasets/Phantom).
 
 ### Run
+You can build & run (Visual studio 2015).
+```
+Step 1. select directory of mask images (datasets/Phantom/masks_1).
+Step 2. select directory of DCM (datasets/Phantom/ct)
+```
+
+Derived results
+```
+Results {
+WT-endo.plt: Calculated wall thickness from endocardium to epicardium,
+WT(projected)-PatientID.plt: Wall thickness projected to surface mesh,
+WT(projected)-PatientID.stl: surface mesh,
+surface_mesh: Reconstructed surface mesh,
+Epi-Endo directory: Images labeled as endocardium, epicardium, and myocardium in binary images
+(pixel value 1: endocardium, 2: myocardium, 3: epicardium)
+}
+```
 
 # Citation
 If you find this code useful, please consider citing our paper.
