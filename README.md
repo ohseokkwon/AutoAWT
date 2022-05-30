@@ -37,7 +37,15 @@ Step 2. select directory of DCM (datasets/Phantom/ct)
 # Citation
 If you find this code useful, please consider citing our paper.
 ```
-@ARTICLE{9736959,  author={Kwon, Oh-Seok and Lee, Jisu and Park, Je-Wook and Yang, So-Hyun and Hwang, Inseok and Yu, Hee Tae and Shin, Hangsik and Pak, Hui-Nam},  journal={IEEE Access},   title={Three-Dimensional Atrial Wall Thickness Measurement Algorithm From a Segmented Atrial Wall Using a Partial Differential Equation},   year={2022},  volume={10},  number={},  pages={32161-32170},  doi={10.1109/ACCESS.2022.3159795}}
+@ARTICLE{9736959,  
+author={Kwon, Oh-Seok and Lee, Jisu and Park, Je-Wook and Yang, So-Hyun and Hwang, Inseok and Yu, Hee Tae and Shin, Hangsik and Pak, Hui-Nam},  
+journal={IEEE Access},   
+title={Three-Dimensional Atrial Wall Thickness Measurement Algorithm From a Segmented Atrial Wall Using a Partial Differential Equation},   
+year={2022},  
+volume={10},  
+number={},  
+pages={32161-32170},  
+doi={10.1109/ACCESS.2022.3159795}}
 }
 ```
 
