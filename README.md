@@ -50,6 +50,6 @@ doi={10.1109/ACCESS.2022.3159795}}
 ```
 
 # Quations / Issues
-If you have any questions or issues using this code, please make a log to the the Issue tab.
+If you have any questions or issues using this code, please make a log to the Issue tab.
 
 # Acknowledgements
